@@ -1,9 +1,14 @@
 -- 5.1 and 5.2 compatible module
-
 local modname = "..."
 local md = {}
--- _G[modname] = md
+local _G = _G
 package.loaded[modname] = md
+
+if type(setfenv) == "function" then
+  setfenv(1, md)
+else
+  _ENV = md
+end
 
 -- cpath will appended to package.cpath
 md.cpath={"/usr/share/lua/5.1/?.so",
