@@ -17,9 +17,10 @@ md.cpath={"/usr/share/lua/5.1/?.so",
 -- path will appended to package.path
 md.path={}
 
-md.bucket="bucket-name-here"
-
-md.secretkey="BB443040c474c388dd10486e82e226e3"
+md.host = "bcs.duapp.com"
+md.bucket=""
+md.apikey = ""
+md.secretkey=""
 
 -- return here
 return md

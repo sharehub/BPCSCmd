@@ -5,6 +5,13 @@ for i = 1, #config.cpath do
 end
 
 sign = require("bcs-sign")
+bcscmd = require("bcs-cmd")
 
-print(sign.GET(config.bucket, "/backup.txt", config.secretkey))
+method = "PUT"
+file = arg[1]
 
+thesign="sign=MBO:"..config.apikey..":"..sign[method](config.bucket, "/"..file, config.secretkey)
+url = "http://"..config.host.."/"..config.bucket.."/%2F"..file.."?"..thesign
+
+bcscmd.upload(file, url)
+-- bcscmd.curlobjinfo()
